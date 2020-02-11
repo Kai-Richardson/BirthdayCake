@@ -152,7 +152,7 @@ public class CakeView extends SurfaceView {
 
         }
 
-        canvas.drawText(String.format("%.0f,%.0f", xpos ,ypos),40, 440, textpaint);
+        canvas.drawText(String.format("%.0f,%.0f", ourModel.xpos ,ourModel.ypos),40, 440, textpaint);
 
 
 

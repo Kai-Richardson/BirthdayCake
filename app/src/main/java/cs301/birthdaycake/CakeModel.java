@@ -7,6 +7,9 @@ public class CakeModel {
     boolean hasFrosting = true;
     boolean hasCandles = true;
 
+    float xpos;
+    float ypos;
+
     public CakeModel() {
 
         System.out.println("Model");

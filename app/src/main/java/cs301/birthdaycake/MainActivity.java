@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         setContentView(R.layout.activity_main);
 
-        final CakeView foundView = findViewById( R.id.cakeview );
+        CakeView foundView = findViewById( R.id.cakeview );
         CakeController ourController = new CakeController(foundView);
 
         Button blowout = findViewById( R.id.blowout );
@@ -30,16 +30,7 @@ public class MainActivity extends AppCompatActivity {
         SeekBar candleSeek = findViewById( R.id.seekcandles );
         candleSeek.setOnSeekBarChangeListener(ourController);
 
-        foundView.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                foundView.xpos = motionEvent.getX();
-                foundView.ypos = motionEvent.getY();
-
-                view.invalidate();
-                return false;
-            }
-        });
+        foundView.setOnTouchListener(ourController);
 
     }
 
