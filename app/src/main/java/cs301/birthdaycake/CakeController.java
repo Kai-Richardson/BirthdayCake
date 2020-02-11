@@ -33,6 +33,8 @@ public class CakeController implements View.OnClickListener, CompoundButton.OnCh
         ourView.invalidate();
     }
 
+
+
     @Override
     public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
         ourView.getOurModel().hasCandles = !ourView.getOurModel().hasCandles;
@@ -53,5 +55,14 @@ public class CakeController implements View.OnClickListener, CompoundButton.OnCh
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {
 
+    }
+
+
+    @Override
+    public boolean onTouch(View view, MotionEvent motionEvent) {
+            ourModel.xpos = motionEvent.getX();
+            ourModel.ypos = motionEvent.getY();
+            view.invalidate();
+        return true;
     }
 }

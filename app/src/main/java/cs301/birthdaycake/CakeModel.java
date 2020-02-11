@@ -8,6 +8,9 @@ public class CakeModel {
     boolean hasCandles = true;
     float[] balloonCoordinates = new float[]{-1f,-1f};
 
+    float xpos;
+    float ypos;
+
     public CakeModel() {
 
         System.out.println("Model");

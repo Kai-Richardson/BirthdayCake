@@ -5,7 +5,9 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.SurfaceView;
+import android.view.View;
 
 public class CakeView extends SurfaceView {
 
@@ -16,6 +18,10 @@ public class CakeView extends SurfaceView {
     Paint outerFlamePaint = new Paint();
     Paint innerFlamePaint = new Paint();
     Paint wickPaint = new Paint();
+    Paint textpaint = new Paint();
+
+    public float xpos;
+    public float ypos;
     Paint balloonStringPaint = new Paint();
     Paint balloonPaint = new Paint();
 
@@ -48,7 +54,7 @@ public class CakeView extends SurfaceView {
      * ctor must be overridden here as per standard Java inheritance practice.  We need it
      * anyway to initialize the member variables
      */
-    public CakeView(Context context, AttributeSet attrs) {
+    public CakeView(Context context, AttributeSet attrs){
         super(context, attrs);
 
         //This is essential or your onDraw method won't get called
@@ -72,6 +78,9 @@ public class CakeView extends SurfaceView {
         balloonPaint.setColor(Color.BLUE);
         balloonPaint.setStyle(Paint.Style.FILL);
 
+
+        textpaint.setColor(Color.RED);
+        textpaint.setTextSize(60);
 
         ourModel = new CakeModel();
 
@@ -154,6 +163,10 @@ public class CakeView extends SurfaceView {
             canvas.drawRect(ourModel.balloonCoordinates[0],ourModel.balloonCoordinates[1] - 200,ourModel.balloonCoordinates[0]+5,ourModel.balloonCoordinates[1],balloonStringPaint);
             canvas.drawOval(ourModel.balloonCoordinates[0] - 90,ourModel.balloonCoordinates[1] - 400,ourModel.balloonCoordinates[0] + 90,ourModel.balloonCoordinates[1] - 200,balloonPaint);
         }
+
+
+        canvas.drawText(String.format("%.0f,%.0f", ourModel.xpos ,ourModel.ypos),40, 440, textpaint);
+
 
 
     }//onDraw
