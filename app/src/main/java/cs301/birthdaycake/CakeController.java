@@ -22,6 +22,8 @@ public class CakeController implements View.OnClickListener, CompoundButton.OnCh
         float y = event.getY();
         ourModel.balloonCoordinates[0] = x;
         ourModel.balloonCoordinates[1] = y;
+        ourModel.xpos = event.getX();
+        ourModel.ypos = event.getY();
         ourView.invalidate();
         return true;
     }
@@ -58,11 +60,5 @@ public class CakeController implements View.OnClickListener, CompoundButton.OnCh
     }
 
 
-    @Override
-    public boolean onTouch(View view, MotionEvent motionEvent) {
-            ourModel.xpos = motionEvent.getX();
-            ourModel.ypos = motionEvent.getY();
-            view.invalidate();
-        return true;
-    }
+
 }
