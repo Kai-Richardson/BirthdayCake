@@ -16,6 +16,8 @@ public class CakeView extends SurfaceView {
     Paint outerFlamePaint = new Paint();
     Paint innerFlamePaint = new Paint();
     Paint wickPaint = new Paint();
+    Paint balloonStringPaint = new Paint();
+    Paint balloonPaint = new Paint();
 
     public CakeModel getOurModel() {
         return ourModel;
@@ -65,6 +67,11 @@ public class CakeView extends SurfaceView {
         innerFlamePaint.setStyle(Paint.Style.FILL);
         wickPaint.setColor(Color.BLACK);
         wickPaint.setStyle(Paint.Style.FILL);
+        balloonStringPaint.setColor(Color.GRAY);
+        balloonStringPaint.setStyle(Paint.Style.FILL);
+        balloonPaint.setColor(Color.BLUE);
+        balloonPaint.setStyle(Paint.Style.FILL);
+
 
         ourModel = new CakeModel();
 
@@ -142,6 +149,12 @@ public class CakeView extends SurfaceView {
 
 
         }
+        if (ourModel.balloonCoordinates[0] != -1f)
+        {
+            canvas.drawRect(ourModel.balloonCoordinates[0],ourModel.balloonCoordinates[1] - 200,ourModel.balloonCoordinates[0]+5,ourModel.balloonCoordinates[1],balloonStringPaint);
+            canvas.drawOval(ourModel.balloonCoordinates[0] - 90,ourModel.balloonCoordinates[1] - 400,ourModel.balloonCoordinates[0] + 90,ourModel.balloonCoordinates[1] - 200,balloonPaint);
+        }
+
 
     }//onDraw
 

@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         CakeView foundView = findViewById( R.id.cakeview );
+
         CakeController ourController = new CakeController(foundView);
 
         Button blowout = findViewById( R.id.blowout );
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         SeekBar candleSeek = findViewById( R.id.seekcandles );
         candleSeek.setOnSeekBarChangeListener(ourController);
 
+        foundView.setOnTouchListener(ourController);
     }
 
     public void goodbye(View button) {
