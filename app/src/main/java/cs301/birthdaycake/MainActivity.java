@@ -3,6 +3,7 @@ package cs301.birthdaycake;
 import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -17,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         setContentView(R.layout.activity_main);
 
-        CakeView foundView = findViewById( R.id.cakeview );
+        final CakeView foundView = findViewById( R.id.cakeview );
         CakeController ourController = new CakeController(foundView);
 
         Button blowout = findViewById( R.id.blowout );
@@ -28,6 +29,17 @@ public class MainActivity extends AppCompatActivity {
 
         SeekBar candleSeek = findViewById( R.id.seekcandles );
         candleSeek.setOnSeekBarChangeListener(ourController);
+
+        foundView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                foundView.xpos = motionEvent.getX();
+                foundView.ypos = motionEvent.getY();
+
+                view.invalidate();
+                return false;
+            }
+        });
 
     }
 
